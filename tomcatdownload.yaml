@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: get tomcat download 
+    get_url:
+      url: https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.31/bin/apache-tomcat-8.5.31.tar.gz
+      dest: /home/ansiblemaster/
+      mode: 777
+      force_basic_auth: yes
