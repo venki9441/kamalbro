@@ -1,0 +1,46 @@
+---
+ - hosts: all
+   become: yes
+   gather_facts: yes
+   tasks:
+   - name: createafile
+     file:
+      path: /home/ansiblemaster/test.txt
+      state: touch
+      name: task inserting
+      shell: 
+        content: echo "helloworld" >test.txt
+   - name: creating a directory
+     directory:
+      path: /home/ansiblemaster
+      state: mkdir
+   - name: creating a user
+     user:
+      username: venkatesh
+      userpassword: venkatesh
+      path: /bin/bash
+   - name: copying a file
+     file:
+     src: /home/ansiblemaster/ansible/file
+     dest: /home/venkatesh
+   - name: creating multiple directories
+     directory:
+     path: /home/ansiblemaster/{{item}}
+     state: present
+     with_items:
+       - tst100
+       - tst200
+       - t22
+   - name: zip source
+     path: /home/git
+     dest: /home/venkatesh
+   - name: removing user
+      username: venkatesh
+      state: absent
+       
+        
+    
+
+         
+
+         
