@@ -1,0 +1,14 @@
+---
+ - host: all
+   become: yes
+   gather_facts: yes
+   vars:
+     name:
+      - venkatesh
+      - kamalbro
+
+
+   tasks:
+      name: display the names
+      debug:
+        msg: "{{var[1]}}"
